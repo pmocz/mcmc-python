@@ -67,7 +67,7 @@ def log_prior(theta, theta_lo, theta_hi):
 	"""
 	return -np.sum( np.log(theta_hi - theta_lo))
 	
-def prop(theta_prev, sigma_theta, theta_lo, theta_hi):
+def propose(theta_prev, sigma_theta, theta_lo, theta_hi):
 	"""
     propose a new set of parameters 'theta' given the previous value
     'theta_prev' in the Markov chain. Choose new values by adding a 
@@ -184,7 +184,7 @@ def main():
 	
 	for i in range(N):
 		# take random step using the proposal distribution
-		theta_prop = prop(theta_prev, sigma_theta, theta_lo, theta_hi)
+		theta_prop = propose(theta_prev, sigma_theta, theta_lo, theta_hi)
 		
 		P_prop = log_posterior(theta_prop, t, rv_data, rv_errors)
 		P_prev = log_posterior(theta_prev, t, rv_data, rv_errors)
