@@ -183,7 +183,7 @@ def main():
 	theta_prev = np.random.uniform(theta_lo, theta_hi)
 	
 	for i in range(N):
-		# take random step in x direction using proposal distrib.
+		# take random step using the proposal distribution
 		theta_prop = prop(theta_prev, sigma_theta, theta_lo, theta_hi)
 		
 		P_prop = log_posterior(theta_prop, t, rv_data, rv_errors)
